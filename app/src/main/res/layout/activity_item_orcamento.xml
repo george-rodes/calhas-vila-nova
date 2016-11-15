@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.valterdiascalhas.orcamentos.ItemOrcamentoActivity">
+
+    <include
+        android:id="@+id/item_orcamento_toolbar"
+        layout="@layout/toolbar" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/item_orcamento_toolbar">
+
+
+
+        <RelativeLayout
+            android:id="@+id/itemOrcamentoRelativeLayoutl1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:paddingBottom="10dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:paddingTop="2dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rl3">
+                <TextView
+                    android:id="@+id/itemOrderCabecalho"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="2dp"
+                    android:background="@drawable/barradegrade"
+                    android:gravity="center_vertical"
+                    android:text="@string/orcamento"
+
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:typeface="normal" />
+
+                <ImageView
+                    android:id="@+id/ivEditCabecalhoOrcamento"
+                    android:layout_width="@dimen/clearBig"
+                    android:layout_height="@dimen/clearBig"
+                    android:src="@drawable/ic_edit_light2"
+                   android:layout_marginTop="8dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:paddingRight="2dp"
+                    android:onClick="starActivityEditarCabecalho"/>
+
+                <ImageView
+                    android:id="@+id/ivDeleteOrcamento"
+                    android:layout_width="@dimen/clearBig"
+                    android:layout_height="@dimen/clearBig"
+                    android:src="@drawable/ic_delete"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="2dp"
+                    android:layout_below="@+id/ivEditCabecalhoOrcamento"
+
+                    android:layout_marginRight="20dp" />
+            </RelativeLayout>
+
+
+
+
+
+            <LinearLayout
+                android:id="@+id/ll5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl3"
+                android:layout_marginTop="10dp"
+                android:background="@color/depressed_color"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="3"
+                    android:text="@string/materialU"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/metrosU"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/rs_metro"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/total_item"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/itemOrderRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll5" />
+
+            <RelativeLayout
+                android:id="@+id/ll6"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/itemOrderRV"
+                android:layout_marginTop="2dp"
+                android:background="@color/depressed_color"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/plus"
+                    android:src="@drawable/ic_add"
+                    android:onClick="startActivityAdicionarMaterial"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/adicionar_material"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:gravity="center_vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/plus"
+                    android:layout_toEndOf="@+id/plus"
+                    android:onClick="startActivityAdicionarMaterial"
+                    />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/itemOrcamentoFooter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/itemOrderRV"
+                android:layout_alignRight="@+id/itemOrderRV"
+                android:layout_below="@+id/ll6"
+                android:layout_marginTop="10dp"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>

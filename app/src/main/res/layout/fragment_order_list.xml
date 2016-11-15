@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ClientListFragment"  >
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/orcamentos"
+        android:id="@+id/orderCabecalho"
+        android:gravity="center_vertical|center_horizontal"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:background="@drawable/barradegrade"
+        android:textColor="@color/white"
+        android:textAlignment="inherit"
+        android:typeface="normal" />
+
+    <ListView
+        android:paddingLeft="4dp"
+        android:paddingRight="2dp"
+        android:layout_below="@+id/orderCabecalho"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listViewOrder"
+        android:background="@color/depressed_color"
+        android:divider="@color/colorAccent"
+        android:dividerHeight="3dp"/>
+
+</RelativeLayout>

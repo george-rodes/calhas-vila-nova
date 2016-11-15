@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_orcamento"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.valterdiascalhas.orcamentos.OrcamentoActivity">
+
+    <include
+        android:id="@+id/orcamento_toolbar"
+        layout="@layout/toolbar" />
+
+    <RelativeLayout
+        android:id="@+id/rlc1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/orcamento_toolbar"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/etApelidoOrcamento"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/formItemHeightS"
+                        android:background="@drawable/barradegradelights"
+                        android:completionThreshold="1"
+                        android:hint="@string/apelido_do_cliente"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords|textVisiblePassword"
+                        android:paddingLeft="2dp"
+                        android:paddingStart="2dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/formLabelHeaderS" />
+
+                    <Button
+                        android:id="@+id/clearApelidoOrcamento"
+                        android:layout_width="@dimen/clearBig"
+                        android:layout_height="@dimen/clearBig"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_action_name"
+                        android:focusable="false"
+                        android:onClick="apagueApelido"
+                        tools:layout_width="@dimen/clearBig" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/b1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="#E8EAF6"
+                        />
+
+                    <Button
+                        android:id="@+id/novo_cliente_orcamento"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_add"
+                        android:focusable="false"
+                         />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/formItemHeightS"
+                    android:layout_weight="7">
+
+
+                    <EditText
+                        android:id="@+id/etDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/barradegradelights"
+                        android:hint="@string/data_no_formato_dd_mm_aaaa"
+                        android:imeOptions="actionNext"
+                        android:inputType="date"
+                        android:paddingLeft="2dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/formLabelHeaderS"
+                        tools:ignore="RtlHardcoded" />
+
+                    <Button
+                        android:id="@+id/clearDataOrcamento"
+                        android:layout_width="@dimen/clearBig"
+                        android:layout_height="@dimen/clearBig"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_action_name"
+                        android:focusable="false"
+                        android:onClick="apagueData" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/bData2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+
+                        android:background="#E8EAF6"
+                        android:onClick="novaData" />
+
+                    <Button
+                        android:id="@+id/bData3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_add"
+                        android:focusable="false"
+                        android:onClick="novaData" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/formItemHeightS">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/etRuaOrcamento"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/formItemHeightS"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/barradegradelights"
+                        android:hint="@string/rua_da_obra"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords|textPersonName"
+                        android:paddingLeft="2dp"
+                        android:completionThreshold="1"
+                        android:paddingStart="2dp"
+                        android:textSize="@dimen/formLabelHeaderS" />
+
+                    <Button
+                        android:id="@+id/clearRuaOrcamento"
+                        android:layout_width="@dimen/clearBig"
+                        android:layout_height="@dimen/clearBig"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_action_name"
+                        android:focusable="false"
+                        android:onClick="apagueRua" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="@dimen/formItemHeightS">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/etBairroOrcamento"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/formItemHeightS"
+                        android:background="@drawable/barradegradelights"
+                        android:completionThreshold="1"
+                        android:hint="@string/bairro_da_obra"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords|textPersonName"
+                        android:paddingLeft="2dp"
+                        android:paddingStart="2dp"
+                        android:textSize="@dimen/formLabelHeaderS" />
+
+                    <Button
+                        android:id="@+id/clearBairroOrcamento"
+                        android:layout_width="@dimen/clearBig"
+                        android:layout_height="@dimen/clearBig"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_action_name"
+                        android:focusable="false"
+                        android:onClick="apagueBairro" />
+                </RelativeLayout>
+
+
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="@dimen/formItemHeightS">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/etCidadeOrcamento"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/formItemHeightS"
+                        android:background="@drawable/barradegradelights"
+                        android:completionThreshold="1"
+                        android:hint="@string/cidade_da_obra"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords|textPersonName"
+                        android:paddingLeft="2dp"
+                        android:paddingStart="2dp"
+                        android:textSize="@dimen/formLabelHeaderS" />
+
+                    <Button
+                        android:id="@+id/clearCidadeOrcamento"
+                        android:layout_width="@dimen/clearBig"
+                        android:layout_height="@dimen/clearBig"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_action_name"
+                        android:focusable="false"
+                        android:onClick="apagueCidade" />
+                </RelativeLayout>
+
+
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/formItemHeightS" android:layout_marginTop="5dp">
+
+
+                    <EditText
+                        android:id="@+id/etValorTotal"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/formItemHeightS"
+                        android:background="@drawable/barradegradelights"
+                        android:digits="0123456789,"
+                        android:hint="@string/valor_total"
+                        android:imeOptions="actionNext"
+                        android:inputType="textVisiblePassword"
+                        android:paddingLeft="2dp"
+                        android:paddingStart="2dp"
+                        android:textSize="@dimen/formLabelHeaderS" />
+
+                    <Button
+                        android:id="@+id/clearValorTotal"
+                        android:layout_width="@dimen/clearBig"
+                        android:layout_height="@dimen/clearBig"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_action_name"
+                        android:focusable="false"
+                        android:onClick="apagueValorTotal" />
+                </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                tools:ignore="UselessParent">
+
+                <EditText
+
+                    android:id="@+id/etObsOrcamento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/barradegradelights"
+                    android:hint="@string/observacao"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="2dp"
+                    android:paddingStart="2dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/formLabelHeaderS" />
+
+                <Button
+                    android:id="@+id/clearObsOrcamento"
+                    android:layout_width="@dimen/clearBig"
+                    android:layout_height="@dimen/clearBig"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_action_name"
+                    android:focusable="false"
+
+                    tools:layout_width="@dimen/clearBig" />
+            </RelativeLayout>
+
+
+
+            <Button
+                android:id="@+id/btSalvarCabecalho"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/blue_button"
+                android:onClick="cliqueIncluirSalvar"
+                android:padding="2dp"
+                android:text="@string/salvar_e_incluir_material"
+                android:textColor="@color/white"
+                android:textSize="@dimen/formLabelsS" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

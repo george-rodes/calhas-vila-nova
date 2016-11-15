@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_item_add_dialog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="2dp"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context="br.com.valterdiascalhas.orcamentos.ItemAddDialogActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7">
+
+            <AutoCompleteTextView
+                android:id="@+id/etMaterial"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/formItemHeightS"
+                android:background="@drawable/barradegradelights"
+                android:completionThreshold="1"
+                android:hint="@string/materialU"
+                android:imeOptions="actionNext"
+                android:inputType="textCapWords|textVisiblePassword"
+                android:paddingLeft="2dp"
+                android:paddingStart="2dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/formLabelHeaderS" />
+
+            <Button
+                android:id="@+id/clearMaterial"
+                android:layout_width="@dimen/clearBig"
+                android:layout_height="@dimen/clearBig"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_action_name"
+                android:focusable="false"
+                android:onClick="apagueMaterial" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/b1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="#E8EAF6"
+                android:onClick="novoMaterial" />
+
+            <Button
+                android:id="@+id/novo_material"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_add"
+                android:focusable="false"
+                android:onClick="novoMaterial" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/formItemHeightS"
+        android:layout_marginTop="5dp">
+
+        <EditText
+            android:id="@+id/etMetro"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/formItemHeightS"
+            android:background="@drawable/barradegradelights"
+            android:digits="0123456789,"
+            android:hint="@string/metrosU"
+            android:imeOptions="actionNext"
+            android:inputType="textVisiblePassword"
+            android:paddingLeft="2dp"
+            android:paddingStart="2dp"
+            android:textSize="@dimen/formLabelHeaderS" />
+
+        <Button
+            android:id="@+id/clearMetro"
+            android:layout_width="@dimen/clearBig"
+            android:layout_height="@dimen/clearBig"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_action_name"
+            android:focusable="false"
+            android:onClick="apagueMetro" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/formItemHeightS"
+        android:layout_marginTop="5dp">
+
+        <EditText
+            android:id="@+id/etRealMetro"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/formItemHeightS"
+            android:background="@drawable/barradegradelights"
+            android:digits="0123456789,"
+            android:hint="@string/r_por_metro"
+            android:imeOptions="actionNext"
+            android:inputType="textVisiblePassword"
+            android:paddingLeft="2dp"
+            android:paddingStart="2dp"
+            android:textSize="@dimen/formLabelHeaderS" />
+
+        <Button
+            android:id="@+id/clearRealMetro"
+            android:layout_width="@dimen/clearBig"
+            android:layout_height="@dimen/clearBig"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_action_name"
+            android:focusable="false"
+            android:onClick="apagueRealMetro" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btCancelar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@color/blue_button"
+            android:onClick="cliqueCancelar"
+            android:padding="2dp"
+            android:text="@string/cancelar"
+            android:textColor="@color/white"
+            android:textSize="@dimen/formLabelsS" />
+
+        <View
+            android:layout_width="3dp"
+            android:layout_height="3dp" />
+
+
+        <Button
+            android:id="@+id/btSalvarCabecalho"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/blue_button"
+            android:onClick="cliqueIncluirSalvar"
+            android:padding="2dp"
+            android:text="@string/salvar"
+            android:textColor="@color/white"
+            android:textSize="@dimen/formLabelsS" />
+    </LinearLayout>
+</LinearLayout>
+

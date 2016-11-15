@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@drawable/barradegradelight">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/apelido"
+        android:text="@string/app_name"
+        android:textSize="@dimen/row_cliente_small_header"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginLeft="5dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_edit"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nome"
+        android:text="@string/app_name"
+        android:textSize="@dimen/row_cliente_small_header_even_smaller"
+        android:textColor="@color/black"
+        android:layout_marginLeft="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:id="@+id/rua"
+            android:textSize="@dimen/row_cliente_small_detail"
+            android:textColor="@color/black"
+            android:layout_marginLeft="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=", "
+            android:textColor="@color/black"
+            android:textSize="@dimen/row_cliente_small_detail"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:id="@+id/bairro"
+            android:textSize="@dimen/row_cliente_small_detail"
+            android:textColor="@color/black"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=", "
+            android:textColor="@color/black"
+            android:textSize="@dimen/row_cliente_small_detail"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:id="@+id/cidade"
+            android:textSize="@dimen/row_cliente_small_detail"
+            android:textColor="@color/black"
+            android:layout_marginLeft="5dp"/>
+    </LinearLayout>
+</LinearLayout>

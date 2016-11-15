@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.valterdiascalhas.orcamentos.ClienteActivity">
+
+    <include
+        android:id="@+id/cliente_toolbar"
+        layout="@layout/toolbar" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/cliente_toolbar">
+
+
+        <LinearLayout
+            android:id="@+id/rl2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+
+            android:paddingTop="5dp"
+            tools:ignore="UselessParent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <AutoCompleteTextView
+                    android:id="@+id/etApelido"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/formItemHeightS"
+                    android:background="@drawable/barradegradelights"
+                    android:completionThreshold="1"
+                    android:hint="@string/apelido"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords|textVisiblePassword"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/formLabelHeaderS" />
+
+                <Button
+                    android:id="@+id/clearApelido"
+                    android:layout_width="@dimen/clearBig"
+                    android:layout_height="@dimen/clearBig"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_action_name"
+                    android:focusable="false"
+                    android:onClick="apagueApelido" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivAlert"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:gravity="center_vertical|start"
+                    android:src="@drawable/ic_warning_black_48dp"
+                    android:visibility="invisible"
+                    android:contentDescription="@string/warning" />
+
+                <TextView
+                    android:id="@+id/tvApelidoMatch"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:focusable="false"
+                    android:gravity="center_vertical"
+                    android:text="@string/action_settings"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <AutoCompleteTextView
+                    android:id="@+id/etNome"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/formItemHeightS"
+                    android:completionThreshold="1"
+                    android:gravity="center_vertical|start"
+                    android:hint="@string/nome"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords|textPersonName"
+                    android:paddingLeft="10dp"
+                    android:textSize="@dimen/formLabelsS" />
+
+                <Button
+                    android:id="@+id/clearNome"
+                    android:layout_width="@dimen/clearBig"
+                    android:layout_height="@dimen/clearBig"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_action_name"
+                    android:focusable="false"
+                    android:onClick="apagueNome" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <EditText
+                    android:id="@+id/etFone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/formItemHeightS"
+                    android:digits="0123456789.-()"
+                    android:gravity="center_vertical|start"
+                    android:hint="@string/fone"
+                    android:imeOptions="actionNext"
+                    android:inputType="phone"
+                    android:paddingLeft="10dp"
+                    android:textSize="@dimen/formLabelsS" />
+
+                <Button
+                    android:id="@+id/clearFone"
+                    android:layout_width="@dimen/clearBig"
+                    android:layout_height="@dimen/clearBig"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_action_name"
+                    android:focusable="false"
+                    android:onClick="apagueFone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/formItemHeightS"
+                    android:gravity="center_vertical|start"
+                    android:hint="@string/Email"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="10dp"
+                    android:textSize="@dimen/formLabelsS" />
+
+                <Button
+                    android:id="@+id/clearEmail"
+                    android:layout_width="@dimen/clearBig"
+                    android:layout_height="@dimen/clearBig"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_action_name"
+                    android:focusable="false"
+                    android:onClick="apagueEmail" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <AutoCompleteTextView
+                    android:id="@+id/etRua"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/formItemHeightS"
+                    android:gravity="top|center_vertical|start"
+                    android:hint="@string/rua"
+                    android:completionThreshold="1"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords|textPersonName"
+                    android:paddingLeft="10dp"
+                    android:textSize="@dimen/formLabelsS" />
+
+                <Button
+                    android:id="@+id/clearRua"
+                    android:layout_width="@dimen/clearBig"
+                    android:layout_height="@dimen/clearBig"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_action_name"
+                    android:focusable="false"
+                    android:onClick="apagueRua" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <AutoCompleteTextView
+                    android:id="@+id/etBairro"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/formItemHeightS"
+                    android:gravity="top|center_vertical|start"
+                    android:hint="@string/bairro"
+                    android:completionThreshold="1"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords|textPersonName"
+                    android:paddingLeft="10dp"
+                    android:textSize="@dimen/formLabelsS" />
+
+                <Button
+                    android:id="@+id/clearBairro"
+                    android:layout_width="@dimen/clearBig"
+                    android:layout_height="@dimen/clearBig"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_action_name"
+                    android:focusable="false"
+                    android:onClick="apagueBairro" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <AutoCompleteTextView
+                    android:id="@+id/etCidade"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/formItemHeightS"
+                    android:gravity="center_vertical|start"
+                    android:hint="@string/cidade"
+                    android:completionThreshold="1"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords|textPersonName"
+                    android:paddingLeft="10dp"
+                    android:textSize="@dimen/formLabelsS" />
+
+                <Button
+                    android:id="@+id/clearCidade"
+                    android:layout_width="@dimen/clearBig"
+                    android:layout_height="@dimen/clearBig"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_action_name"
+                    android:focusable="false"
+                    android:onClick="apagueCidade" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btSalvarCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/blue_button"
+                android:onClick="cliqueIncluirSalvar"
+                android:padding="5dp"
+                android:paddingLeft="10dp"
+                android:text="@string/salva"
+                android:textColor="@color/white"
+                android:textSize="@dimen/formLabelsS" />
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>

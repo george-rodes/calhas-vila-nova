@@ -1,0 +1,197 @@
+
+
+ @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //
+        if (data != null) {
+            // Check which request we're responding to
+            if (requestCode == INCLUIR_NOVO_CLIENTE) {
+                // Make sure the request was successful
+                if (resultCode == RESULT_OK) {
+                    L.t(this, "Inclusão do Cliente " + data.getStringExtra("apelido") + " efetuada com Sucesso");
+                }
+                if (resultCode == RESULT_CANCELED) {
+                    L.t(this, "Cliente " + data.getStringExtra("apelido") + " NÂO foi cadastrado!");
+                }
+            } else if (requestCode == INCLUIR_NOVO_ORCAMENTO){
+                // Make sure the request was successful
+                if (resultCode == RESULT_OK) {
+                    L.t(this, getString(R.string.inclusao_orcamento_ok));
+                }
+                if (resultCode == RESULT_CANCELED) {
+                    L.t(this, getString(R.string.inclusao_orcamento_failed));
+                }
+            }
+        }
+    }
+
+
+public void startClienteActivityForResult(){
+        Intent intent = new Intent(this, ClienteActivity.class);
+        intent.putExtra("Origem", "Novo Cliente");
+        startActivityForResult(intent, INCLUIR_NOVO_CLIENTE);
+    }
+    public void startOrcamentoActivityForResult() {
+        Intent intent = new Intent(this, OrcamentoActivity.class);
+        intent.putExtra("Origem", "Novo Orcamento");
+        startActivityForResult(intent, INCLUIR_NOVO_ORCAMENTO);
+    }
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:src="@drawable/ic_action_plus"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/itemOrcamentoFooter"
+            android:layout_alignEnd="@+id/itemOrcamentoFooter" />
+
+______________________________________________________________
+        //if we dont find one, we must not be in two pane mode
+        if(orcamentoFragment != null){
+            //we must be in two pane layout
+
+            if (orcamentoFragment.adapter != null) {
+                orcamentoFragment.atualizeOrcamentosDoCliente(what);
+            }
+
+        } else {
+            //we must be in one pane layout
+            //Create Fragment and give it an argument for the selected article right away
+            OrcamentoFragment swapFragment = new OrcamentoFragment();
+            Bundle args = new Bundle();
+            args.putString("who", who);
+            args.putString("what",what);
+
+            swapFragment.setArguments(args);
+            //now that the Fragment is prepared, swap it
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container, swapFragment)
+                    .addToBackStack(null)
+                    .commit();
+        }
+
+______________________________________________________________
+package br.com.valterdiascalhas.orcamentos;
+
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
+public class OrcamentoFragment extends Fragment {
+    View rootView;
+    ListView listViewOrder;
+    DBAdapter dbAdapter;
+    SQLiteDatabase sqLiteDatabase;
+    Cursor c;
+    String mFromColumns[];
+    int mToFields[];
+    String cliente;
+    TextView orderCabecalho;
+    ArrayList<Orcamento> orcamentos;
+    OrcamentoAdapter adapter;
+
+    public OrcamentoFragment() {
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            cliente = savedInstanceState.getString("cliente");
+        } else cliente = "Desconhecido";
+    }
+
+    @Override
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        rootView = inflater.inflate(R.layout.fragment_order_list, container, false);
+        listViewOrder = (ListView) rootView.findViewById(R.id.listViewOrder);
+        orderCabecalho = (TextView) rootView.findViewById(R.id.orderCabecalho);
+
+        dbAdapter = new DBAdapter(rootView.getContext());
+        sqLiteDatabase = dbAdapter.mydbHelper.getWritableDatabase();
+        c = dbAdapter.retrieveOrcamento("Desconhecido");
+        orcamentos = new ArrayList<>();
+        if (c.getCount() > 0) {
+            while (c.moveToNext()) {
+                orcamentos.add(new Orcamento(
+                        c.getInt(1), c.getString(2), c.getString(3), c.getInt(4), c.getInt(5),
+                        c.getInt(6), c.getString(7), c.getString(8), c.getString(9), c.getInt(10),
+                        c.getString(11)));
+            }
+        }
+        adapter = new OrcamentoAdapter(rootView.getContext(), orcamentos);
+        listViewOrder.setAdapter(adapter);
+        listViewOrder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                c.moveToPosition(position);
+                Intent intent = new Intent(getActivity(), ItemOrcamentoActivity.class);
+                intent.putExtra("orcamento",c.getString(c.getColumnIndex("orcamento")));
+                intent.putExtra("cliente",c.getString(c.getColumnIndex("nome")));
+                intent.putExtra("data",c.getString(c.getColumnIndex("data")));
+                intent.putExtra("rua",c.getString(c.getColumnIndex("rua")));
+                intent.putExtra("bairro",c.getString(c.getColumnIndex("bairro")));
+                intent.putExtra("cidade",c.getString(c.getColumnIndex("cidade")));
+                startActivity(intent);
+            }
+        });
+        return rootView;
+    }
+
+
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("cliente", cliente);
+    }
+
+    public void atualizeOrcamentosDoCliente(String nome) {
+        cliente = nome;
+        dbAdapter = new DBAdapter(getActivity());
+        sqLiteDatabase = dbAdapter.mydbHelper.getWritableDatabase();
+        c = dbAdapter.retrieveOrcamento(nome);
+        if (c.getCount() > 0) {
+            orcamentos.clear();
+            if (c.getCount() > 0) {
+                while (c.moveToNext()) {
+                    orcamentos.add(new Orcamento(
+                            c.getInt(1), c.getString(2), c.getString(3), c.getInt(4), c.getInt(5),
+                            c.getInt(6), c.getString(7), c.getString(8), c.getString(9), c.getInt(10),
+                            c.getString(11)));
+                }
+            }
+        }
+        adapter.notifyDataSetChanged();
+    }
+
+    private void mostraJanela(String s) {
+        JanelaDialogFragment janela = new JanelaDialogFragment();
+        // Supply num input as an argument.
+        Bundle args = new Bundle();
+        args.putString("nome", s);
+        janela.setArguments(args);
+        janela.show(getActivity().getSupportFragmentManager(),"tag_janela");
+        //L.m("JanelaDialogFragment Show2" + s);
+    }
+
+}

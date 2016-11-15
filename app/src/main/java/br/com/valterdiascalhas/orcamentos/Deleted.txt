@@ -1,0 +1,74 @@
+/***************
+
+ Bundle extras = data.getExtras();
+                mImageBitmap = (Bitmap) extras.get("data");
+                //imageViewModeloCalha.setImageBitmap(decodeBitmap(mImageBitmap, PIXELS_FOR_DISPLAY, PIXELS_FOR_DISPLAY));
+
+                //copy to data to picturespath
+                File sd = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+                File file = new File(sd, imagem);
+                FileOutputStream fOut;
+                try {
+                    fOut = new FileOutputStream(file);
+                    mImageBitmap.compress(Bitmap.CompressFormat.JPEG, COMPRESSAO_JPG, fOut);
+                    fOut.flush();
+                    fOut.close();
+                    mImageBitmap.recycle();
+
+                } catch (Exception e) {
+                    L.m(e.toString());
+                }
+
+
+/***************/
+        orderViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //L.m("Ordenumber is: "+ orcamentos.get(position).getOrcamento()  );
+                Intent intent = new Intent(context, ItemOrcamentoActivity.class);
+                String i = Integer.toString(orcamentos.get(position).getOrcamento());
+                intent.putExtra("orcamento",i);
+                intent.putExtra("cliente",orcamentos.get(position).getNome());
+                intent.putExtra("data",orcamentos.get(position).getData());
+                intent.putExtra("rua",orcamentos.get(position).getRua());
+                intent.putExtra("bairro",orcamentos.get(position).getBairro());
+                intent.putExtra("cidade",orcamentos.get(position).getCidade());
+                intent.putExtra("total",totalIntent);
+                context.startActivity(intent);
+
+            }
+        });
+
+      /***************************/
+
+ /** FOR MARSHMALLOW ************/
+                //dialog.setStyle(DialogFragment.STYLE_NORMAL,R.style.AppTheme);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    dialog.setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Material_Light_Dialog_Alert);
+                }
+                dialog.show(fm, "DetalheItem");
+
+
+/**
+        if (Intent.ACTION_SEARCH.equals(searchIntent.getAction())) {
+            query = searchIntent.getStringExtra(SearchManager.QUERY);
+            getSupportActionBar().setTitle(query);
+            //cursor = dbAdapter.cursorPublicadorBusca(query);
+            if (cursor.getCount() > 0) {
+                CursorAdapter listAdapter = new SimpleCursorAdapter(SearchResults.this, R.layout.row_cliente,
+                        cursor, new String[]{"apelido", "nome"}, new int[]{R.id.nome, R.id.rua}, 0);
+                listViewOrder.setAdapter(listAdapter);
+            }
+            listViewOrder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    view.setSelected(true);
+                    cursor.moveToPosition(position);
+                    //  Intent intent = new Intent(view.getContext(), AtividadesActivity.class);
+                    //  intent.putExtra("nome", cursor.getString(cursor.getColumnIndex("nome")));
+                    //  startActivity(intent);
+                }
+            });
+        }
+
+**/

@@ -1,0 +1,32 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="clearBig">30dp</dimen>
+    <dimen name="clearBigger">50dp</dimen>
+    <dimen name="clearBigger2">70dp</dimen>
+    <dimen name="cv_backup_big">40sp</dimen>
+    <dimen name="dialogClienteUpdate">25sp</dimen>
+    <dimen name="dialogClienteUpdateS">14sp</dimen>
+    <dimen name="dialogClienteUpdateHeader">28sp</dimen>
+    <dimen name="dialogClienteUpdateHeaderS">16sp</dimen>
+    <dimen name="dialogFontSize">30sp</dimen>
+    <dimen name="dialogFontSizeSmall">20sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="font_backup_small">18sp</dimen>
+    <dimen name="formItemHeight">60dp</dimen>
+    <dimen name="formItemHeightS">40dp</dimen>
+    <dimen name="formLabelHeader">35sp</dimen>
+    <dimen name="formLabelHeaderS">16sp</dimen>
+    <dimen name="formLabels">26sp</dimen>
+    <dimen name="formLabelsS">14sp</dimen>
+    <dimen name="row_cliente_small_detail">10sp</dimen>
+    <dimen name="row_cliente_small_header">18sp</dimen>
+    <dimen name="row_cliente_small_header_even_smaller">14sp</dimen>
+    <dimen name="table_header_large">30sp</dimen>
+    <dimen name="ic_clear_margin">16dp</dimen>
+
+</resources>

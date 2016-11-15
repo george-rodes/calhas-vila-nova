@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvCliente"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp"
+    android:orientation="vertical"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardPreventCornerOverlap="false">
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/barradegradelights"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/llOrcamento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:orientation="vertical">
+            <!-- para os CLiques do orcamento-->
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/apelido"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/app_name"
+                    android:textColor="@color/black"
+                    android:textSize="35sp"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/nome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/fone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/rua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/app_name"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=", "
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/bairro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/app_name"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=", "
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/cidade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/app_name"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/ivEditCliente"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ic_edit" />
+
+
+                <ImageView
+                    android:id="@+id/ivEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_email" />
+
+                <ImageView
+                    android:id="@+id/ivOrcamento"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_novo_orcamento_black"
+                    android:layout_centerVertical="true"
+               />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

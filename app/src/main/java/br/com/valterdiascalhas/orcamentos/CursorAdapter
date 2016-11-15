@@ -1,0 +1,29 @@
+_______________________________________________
+if (cursor.getCount() > 0) {
+            cursorAdapter = new SimpleCursorAdapter(
+                    getApplicationContext(),
+                    R.layout.row_navegar_calhas_linear,
+                    cursor,
+                    new String[]{"codigo", "nome", "imagem"},
+                    new int[]{R.id.codigoCalha, R.id.nomeCalha,  R.id.myncImageViewLinear  }, 0);
+            calhasListView.setAdapter(cursorAdapter);
+        }
+
+        cursorAdapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
+            @Override
+            public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
+                return false;
+            }
+        });
+
+        calhasListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+                selectedItem = view;
+                view.setSelected(true);
+                cursor.moveToPosition(position);
+                L.m(cursor.getString(cursor.getColumnIndex("codigo")) + " "  +   cursor.getString(cursor.getColumnIndex("imagem")));
+
+            }
+        });

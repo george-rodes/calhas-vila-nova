@@ -1,0 +1,207 @@
+
+
+______________________
+
+    <ImageView
+        android:id="@+id/imageViewCameraResult"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimary" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etNewPath"
+        android:text="MYPATH1"
+        android:textSize="25sp"
+        android:layout_below="@+id/imageViewCameraResult"
+        android:inputType="date" />
+
+    <Button
+        android:id="@+id/btnTakePicture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etNewPath"
+        android:text="Take a Picture"
+      />
+
+    <Button
+    android:id="@+id/btnNewPAth"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/btnTakePicture"
+    android:onClick="createExternalFilesDir"
+    android:text="Create Folder in the Pitctures Directory" />
+
+    <Button
+        android:id="@+id/btnListFiles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnNewPAth"
+        android:onClick="listFiles"
+        android:text="List Files in the Pitctures Directory" />________________________________
+public class MainActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
+
+    DBAdapter dbAdapter;
+    SQLiteDatabase sqLiteDatabase;
+    Cursor cursor;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+    Button btnTakePicture;
+    Bitmap imageBitmap;
+    ImageView imageViewCameraResult;
+    String mCurrentPhotoPath;
+    EditText etNewPath;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        btnTakePicture = (Button) findViewById(R.id.btnTakePicture);
+        imageViewCameraResult = (ImageView) findViewById(R.id.imageViewCameraResult);
+        etNewPath = (EditText) findViewById(R.id.etNewPath);
+
+        btnTakePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                L.m("onClick dispatchTakePictureIntent");
+                dispatchTakePictureIntent();
+            }
+        });
+        //L.m("Helloo, MainActivity OnCreate. Do NOT delete me!");
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.app_name);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        /*** VERIFICAÇÕES INICIAIS DO BANCO DE DADOS ***/
+
+        dbAdapter = new DBAdapter(getApplicationContext());
+        sqLiteDatabase = dbAdapter.mydbHelper.getWritableDatabase();
+
+        if (!Utilidades.existeTabela("cliente", MainActivity.this) &&
+                !Utilidades.existeTabela("ormamento", MainActivity.this) &&
+                !Utilidades.existeTabela("itemorcamento", MainActivity.this) &&
+                !Utilidades.existeTabela("material", MainActivity.this)) {
+            dbAdapter.mydbHelper.onCreate(sqLiteDatabase);
+        }
+    }
+
+    public void listFiles(View v) {
+        /** L.m(getExternalFilesDir(Environment.DIRECTORY_PICTURES).toString()); */
+        File dir = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES).toString());
+        File file[] = dir.listFiles();
+        for (File f : file) {
+            L.m(f.getName());
+        }
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main_activity, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        if (id == R.id.novo_orcamento) {
+            return true;
+        }
+
+        if (id == R.id.novo_modelo_de_calha) {
+            //Activyt Calha
+            return true;
+        }
+
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_camera) {
+            L.m("onClick dispatchTakePictureIntent");
+            dispatchTakePictureIntent();
+        } else if (id == R.id.nav_gallery) {
+
+        } else if (id == R.id.nav_slideshow) {
+
+        } else if (id == R.id.nav_manage) {
+            startActivity(new Intent(this, BackupAndRestore.class));
+            return true;
+        } else if (id == R.id.nav_clientes) {
+
+        } else if (id == R.id.nav_orcamentos) {
+
+        } else if (id == R.id.nav_itens_orcamento) {
+
+        } else if (id == R.id.nav_modelo_calha) {
+            startActivity(new Intent(this, NavegarCalhas.class));
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    public void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            imageViewCameraResult.setImageBitmap(imageBitmap);
+        }
+        //https://www.dropbox.com/home/Aplicativos/AplicativoOrcamentos/FOTOS
+        //super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public void createExternalFilesDir(View v) {
+        String newPath = getExternalFilesDir(Environment.DIRECTORY_PICTURES).toString() + "/" + etNewPath.getText().toString();
+        File dir = new File(newPath);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+    }
+
+
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_orcamentos"
+        android:icon="@drawable/ic_attach_money_black_48dp"
+        android:title="@string/navegar_orcamentos" />
+
+    <item
+        android:id="@+id/drawer_novo_cliente"
+        android:icon="@drawable/ic_action_novo_cliente"
+        android:title="@string/novo_cliente" />
+
+    <item
+        android:id="@+id/nav_modelo_calha"
+        android:icon="@drawable/modelo_calha"
+        android:title="@string/navegar_modelo_calha" />
+    <item
+        android:id="@+id/editar_calha"
+        android:icon="@drawable/modelo_calha"
+        android:title="@string/editar_calha" />
+
+    <item
+        android:id="@+id/backup"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="@string/backup_e_restaura_o" />
+
+</menu>

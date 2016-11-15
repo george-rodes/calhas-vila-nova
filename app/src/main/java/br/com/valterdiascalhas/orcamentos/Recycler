@@ -1,0 +1,200 @@
+
+
+_________________________________________________________
+package br.com.valterdiascalhas.orcamentos;
+
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+
+/**
+ * http://www.littlerobots.nl/blog/Handle-Android-RecyclerView-Clicks/
+ */
+public class ItemClickSupport {
+    private final RecyclerView mRecyclerView;
+    private OnItemClickListener mOnItemClickListener;
+    private OnItemLongClickListener mOnItemLongClickListener;
+    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (mOnItemClickListener != null) {
+                RecyclerView.ViewHolder holder = mRecyclerView.getChildViewHolder(v);
+                mOnItemClickListener.onItemClicked(mRecyclerView, holder.getAdapterPosition(), v);
+            }
+        }
+    };
+    private View.OnLongClickListener mOnLongClickListener = new View.OnLongClickListener() {
+        @Override
+        public boolean onLongClick(View v) {
+            if (mOnItemLongClickListener != null) {
+                RecyclerView.ViewHolder holder = mRecyclerView.getChildViewHolder(v);
+                return mOnItemLongClickListener.onItemLongClicked(mRecyclerView, holder.getAdapterPosition(), v);
+            }
+            return false;
+        }
+    };
+    private RecyclerView.OnChildAttachStateChangeListener mAttachListener
+            = new RecyclerView.OnChildAttachStateChangeListener() {
+        @Override
+        public void onChildViewAttachedToWindow(View view) {
+            if (mOnItemClickListener != null) {
+                view.setOnClickListener(mOnClickListener);
+            }
+            if (mOnItemLongClickListener != null) {
+                view.setOnLongClickListener(mOnLongClickListener);
+            }
+        }
+
+        @Override
+        public void onChildViewDetachedFromWindow(View view) {
+
+        }
+    };
+
+    private ItemClickSupport(RecyclerView recyclerView) {
+        mRecyclerView = recyclerView;
+        mRecyclerView.setTag(R.id.item_click_support, this);
+        mRecyclerView.addOnChildAttachStateChangeListener(mAttachListener);
+    }
+
+    public static ItemClickSupport addTo(RecyclerView view) {
+        ItemClickSupport support = (ItemClickSupport) view.getTag(R.id.item_click_support);
+        if (support == null) {
+            support = new ItemClickSupport(view);
+        }
+        return support;
+    }
+
+    public static ItemClickSupport removeFrom(RecyclerView view) {
+        ItemClickSupport support = (ItemClickSupport) view.getTag(R.id.item_click_support);
+        if (support != null) {
+            support.detach(view);
+        }
+        return support;
+    }
+
+    public ItemClickSupport setOnItemClickListener(OnItemClickListener listener) {
+        mOnItemClickListener = listener;
+        return this;
+    }
+
+    public ItemClickSupport setOnItemLongClickListener(OnItemLongClickListener listener) {
+        mOnItemLongClickListener = listener;
+        return this;
+    }
+
+    private void detach(RecyclerView view) {
+        view.removeOnChildAttachStateChangeListener(mAttachListener);
+        view.setTag(R.id.item_click_support, null);
+    }
+
+    public interface OnItemClickListener {
+
+        void onItemClicked(RecyclerView recyclerView, int position, View v);
+    }
+
+    public interface OnItemLongClickListener {
+
+        boolean onItemLongClicked(RecyclerView recyclerView, int position, View v);
+    }
+}
+_____________________________________________________________________
+package br.com.valterdiascalhas.orcamentos;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import java.util.ArrayList;
+
+/**
+ * Created by George on 17/08/2016.
+ */
+public class MyRecViewAdapter extends RecyclerView.Adapter<MyRecViewAdapter.ViewHolder> {
+
+    Context context;
+    LayoutInflater mInflater;
+
+    ArrayList<Bitmap> images = new ArrayList<>();
+
+    public MyRecViewAdapter(Context c) {
+        this.context = c;
+        mInflater = LayoutInflater.from(c);
+
+        /**********************************/
+        images.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.cvnlogo));
+        images.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.cvnlogotransparent));
+        images.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.dropboxloggedin));
+        images.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.dropboxloggedout));
+        images.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.modelo_calha));
+
+    }
+
+    @Override
+    public MyRecViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = mInflater.inflate(R.layout.row_navegar_calhas_linear, parent, false);
+        return new ViewHolder(view);
+    }
+
+    /**
+     * represents the layout of the row
+     **/
+    public class ViewHolder extends RecyclerView.ViewHolder  {
+        ImageView ncImageView;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+
+            ncImageView = (ImageView) itemView.findViewById(R.id.ncImageViewLinear);
+        }
+
+
+    }
+
+
+
+    @Override
+    public void onBindViewHolder(MyRecViewAdapter.ViewHolder holder, int position) {
+        holder.ncImageView.setImageBitmap(images.get(position));
+    }
+
+
+    @Override
+    public int getItemCount() {
+
+        return images.size();
+        //return 0;
+    }
+
+
+}
+
+____________________
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false );
+        recyclerView = (RecyclerView) findViewById(R.id.ncRecylervView);
+        recyclerView.setLayoutManager(layoutManager);
+
+
+        /****specify an adapter (see also next example)
+         mAdapter = new MyAdapter(myDataset);
+         mRecyclerView.setAdapter(mAdapter);
+         */
+        MyRecViewAdapter myRecViewAdapter =  new MyRecViewAdapter(this);
+        recyclerView.setAdapter(myRecViewAdapter);
+        //recyclerView.onTouchEvent(new );
+        //recyclerView.getOn
+        ItemClickSupport.addTo(recyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                L.m("Position " + position );
+
+
+
+            }
+        });
+

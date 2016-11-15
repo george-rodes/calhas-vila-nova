@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.com.valterdiascalhas.orcamentos">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/SplashScreenTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".SearchResults" />
+        </activity>
+        <activity
+            android:name=".BackupActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".MaterialListActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name="com.dropbox.client2.android.AuthActivity"
+            android:configChanges="orientation|keyboard"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <data android:scheme="db-vwk5jtt3pjuq7jx" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SearchResults">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+
+        <!-- Content Provider to query sqlite database -->
+        <provider
+            android:name=".MyCustomSuggestionProvider"
+            android:authorities="br.com.valterdiascalhas.orcamento.MyCustomSuggestionProvider"
+            android:exported="true" />
+
+        <activity android:name=".ClienteActivity" />
+        <activity android:name=".ItemOrcamentoActivity">
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".SearchResults" />
+        </activity>
+        <activity
+            android:name=".OrcamentoActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".ItemAddDialogActivity" />
+        <activity android:name=".MaterialAddActivity" />
+        <activity android:name=".PopupActivity"
+            android:parentActivityName=".MaterialAddActivity"/>
+    </application>
+
+</manifest>

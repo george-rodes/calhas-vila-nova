@@ -1,0 +1,34 @@
+etFone.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            boolean isUpdating;
+            String old = "";
+            String mask="##"
+            @Override                                   //length        //->0,1,<-1,0
+            public void onTextChanged(CharSequence s, int i, int i1, int i2) {
+                String str = s.toString();
+                String mascara = "";
+                if (isUpdating) {
+                    old = str;
+                    isUpdating = false;
+                    return;
+                }
+                isUpdating = true;
+                int index = 0;
+                for (char m :s.toString().toCharArray()){
+
+                    mascara+=m;
+                }
+
+                etFone.setText(mascara);
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });

@@ -1,0 +1,145 @@
+<resources>
+    <string name="action_settings">Settings</string>
+    <string name="adicionar_material">Adicionar Material</string>
+    <string name="apelido">Apelido</string>
+    <string name="apelido_do_cliente">Apelido Do Cliente</string>
+    <string name="app_name">Orcamentos Calhas</string>
+    <string name="atualizar_banco_question">O Banco atual será perdido!\nAtualizar Banco de Dados?</string>
+    <string name="backup_e_restaura_o">Backup e Restauração</string>
+    <string name="bairro">Bairro</string>
+    <string name="bairro_da_obra">Bairro da Obra</string>
+    <string name="cadastrar_novo_cliente">Apelido não encontrado!\nCadastrar como novo Cliente?</string>
+    <string name="cadastrar_novo_material">Material não encontrado!\nCadastrar como novo Material?</string>
+    <string name="cadastro_de_cliente">Cadastro de Cliente</string>
+    <string name="calhasvilanova_gmail_com">calhasvilanova@gmail.com</string>
+    <string name="campos_vazios">Precisa Informar pelo menos o Apelido e o Nome</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="cidade">Cidade</string>
+    <string name="cidade_da_obra">Cidade da Obra</string>
+    <string name="cliente">"Cliente: "</string>
+    <string name="cliente_ja_existe">Cliente já está cadastrado.\nPode atualizar os dados do cadastro.</string>
+    <string name="cliente_possui_orcamentos">Não é possivel deletar o Cliente quando tem orçamentos no nome dele.\nPrecisa passar os Orçamentos para outro Nome</string>
+    <string name="clientes">CLIENTES</string>
+    <string name="confirma_exluir_cliente">Confirma exclusão do Cliente?</string>
+    <string name="confirma_exluir_orcamento">Confirma exclusão do Cabeçalho do Orçamento?</string>
+    <string name="create_database">Criar Database</string>
+    <string name="create_table_calha">Criar Tabela Modelos de Calha</string>
+    <string name="data">"Data: "</string>
+    <string name="data_invalida">Data Inválida!</string>
+    <string name="data_no_formato_dd_mm_aaaa">Data no formato dd/mm/aaaa</string>
+    <string name="delete_orcamento">Apagar Orçamento</string>
+    <string name="deleteCliente">Apagar</string>
+    <string name="editar_cliente">Editar Cliente</string>
+    <string name="editar_valores">Editar Valores</string>
+    <string name="Email">Email</string>
+    <string name="email">valterdiasme@gmail.com</string>
+    <string name="enviar_backup_para_o_dropbox">Enviar Backup para o Dropbox</string>
+    <string name="enviar_orcamento">Enviar Orçamento</string>
+    <string name="enviar_para_o_email">Enviar Backup para o Email</string>
+    <string name="fone">Fone</string>
+    <string name="go_back">Is is done. Go Back were you came from</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="incluir">Incluir</string>
+    <string name="inclusao_orcamento_failed">Orçamento NÂO foi cadastrado!</string>
+    <string name="inclusao_orcamento_ok">Inclusão do Orçamento efetuada com Sucesso</string>
+    <string name="informar_apelido">Precisa informar o Apelido do Cliente!</string>
+    <string name="informar_material">Precisa informar o Material!</string>
+    <string name="item_nao_adicionado">Item NÂO foi adicionado ao Orçamento</string>
+    <string name="local">"Local: "</string>
+    <string name="login_logout_from_dropbox">Login/Logout from Dropbox</string>
+    <string name="materal_ja_adicionado">Material já foi adicionado ao Orçamento!</string>
+    <string name="material">Rufo Capa com Passarinheira C30</string>
+    <string name="material_nao_removido">Material NÃO foi removido</string>
+    <string name="material_removido">Material removido!</string>
+    <string name="materialU">Material</string>
+    <string name="menu_search">Procurar</string>
+    <string name="metros">metros</string>
+    <string name="metrosU">Metros</string>
+    <string name="NAO">NÂO</string>
+    <string name="nao_implementado_ainda">Não Implementado Ainda</string>
+    <string name="navegar_cliente">Clientes</string>
+    <string name="navegar_itens_orcamento">Itens de Orcamento</string>
+    <string name="navegar_modelo_calha">Modelos de Calha</string>
+    <string name="navegar_orcamentos">Novo Orcamento</string>
+    <string name="navigate_table_calha">Navegar Modelos de Calhas</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="nome">Nome</string>
+    <string name="novo_cliente">Novo Cliente</string>
+    <string name="novo_cliente_toolbar">Novo Cliente</string>
+    <string name="novo_modelo_de_calha">Novo Modelo de Calha</string>
+    <string name="novo_orcamento">Novo Orçamento</string>
+    <string name="numero">"Número: "</string>
+    <string name="ok">OK</string>
+    <string name="orcamento">Orçamento</string>
+    <string name="orcamento_cadastrado">Orcamento Cadastrado</string>
+    <string name="orcamento_excluido">Orçamento foi excluído</string>
+    <string name="orcamento_nao_cadastrado">Orçamento NÃO foi cadastrado</string>
+    <string name="orcamento_nao_definido">orcamento_id NÃO definido.\nNO intent.hasExtra(\"orcamento_id\")</string>
+    <string name="orcamento_nao_existe">Orçamento não existe</string>
+    <string name="orcamento_possui_material">Orçamento possui material cadastrado e não pode ser excluido. Remova todo material primeiro</string>
+    <string name="orcamentos">ORÇAMENTOS</string>
+    <string name="r_por_metro">R$ por Metro</string>
+    <string name="razaosocial">Valter Dias Calhas ME</string>
+    <string name="recuperar_backup_do_dropbox">Recuperar Backup do Dropbox</string>
+    <string name="recuperar_base_do_cart_o">Recuperar Backup do Cartão</string>
+    <string name="remover_material">Remover o Material do Orçamento?</string>
+    <string name="remover_material_do_orcamento">Remover Material do Orçamento?</string>
+    <string name="rs_metro">R$/Metro</string>
+    <string name="rua">Rua</string>
+    <string name="rua_da_obra">Rua da Obra</string>
+    <string name="s">Salvar</string>
+    <string name="salva">Salvar</string>
+    <string name="salvar">Salvar</string>
+    <string name="salvar_e_incluir_material">Salvar e Incluir Material</string>
+    <string name="searchable">Procurar</string>
+    <string name="sem_bairro">Sem bairro</string>
+    <string name="sem_cidade">Sem cidade</string>
+    <string name="sem_email">Sem email</string>
+    <string name="sem_fone">Sem fone</string>
+    <string name="sem_nome">Sem Nome</string>
+    <string name="sem_rua">Sem rua</string>
+    <string name="SIM">SIM</string>
+    <string name="tela_inicial">Tela Inicial</string>
+    <string name="tela_inicial2">Tela Inicial2</string>
+    <string name="tela_principal">Tela Principal</string>
+    <string name="total_item">Total Item</string>
+    <string name="valor_metro_invalido">O Valor da Metragem não é um número válido!</string>
+    <string name="valor_precometro_invalido">O Valor do Preço por Metro não é um número válido!</string>
+    <string name="valor_total">"Valor Total: "</string>
+    <string name="valor_total_invalido">O Valor do Orçamento não é um número válido!</string>
+    <string name="warning">Warning</string>
+    <string name="novo_material">Novo Material</string>
+    <string name="editar_calha">Editar Calha</string>
+    <string name="modelo_de_calha">Modelo de Calha</string>
+    <string name="em_breve_imagem">Em breve poderá escolher a imagem!</string>
+    <string name="observacao">Observação</string>
+    <string name="material_ja_cadastrado">Material já está cadastrado!</string>
+    <string name="nome_generico">Nome Genérico</string>
+    <string name="informar_nome">Por favor, informar um nome genérico</string>
+    <string name="nada_a_salvar">Não tem nada para salvar!</string>
+    <string name="apagar_material">Apagar Material</string>
+    <string name="cadastro_de_material">Cadastro de Material</string>
+    <string name="clique_para_ver_onde_usado">Clique para ver onde é Usado</string>
+    <string name="escolher_imagem">Escolher Imagem</string>
+    <string name="tirar_foto">Tirar Foto</string>
+    <string name="imagem_perdida">Imagem atual será perdida!\nConfirma?</string>
+
+
+    <string-array name="cidade">
+        <item>Bofete</item>
+        <item>Anhembi</item>
+        <item>Botucatu</item>
+        <item>Cesário Lange</item>
+        <item>Conchas</item>
+        <item>Guarei</item>
+        <item>Itapetininga</item>
+        <item>Juquiratiba</item>
+        <item>Pardinho</item>
+        <item>Pereiras</item>
+        <item>Pirambóia</item>
+        <item>Porangaba</item>
+        <item>Quadra</item>
+        <item>Torre de Pedra</item>
+    </string-array>
+</resources>

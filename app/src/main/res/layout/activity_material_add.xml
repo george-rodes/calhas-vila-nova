@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="5dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp"
+    tools:context="br.com.valterdiascalhas.orcamentos.MaterialAddActivity">
+
+
+    <include
+        android:id="@+id/toolbarMaterial"
+        layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:id="@+id/ll2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbarMaterial"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            tools:ignore="UselessParent">
+
+            <AutoCompleteTextView
+                android:id="@+id/etAddMaterial"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/formItemHeightS"
+                android:background="@drawable/barradegradelights"
+                android:completionThreshold="1"
+                android:hint="@string/materialU"
+                android:imeOptions="actionNext"
+                android:inputType="textCapWords|textVisiblePassword"
+                android:paddingLeft="2dp"
+                android:paddingStart="2dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/formLabelHeaderS" />
+
+            <Button
+                android:id="@+id/clearAddMaterial"
+                android:layout_width="@dimen/clearBig"
+                android:layout_height="@dimen/clearBig"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_action_name"
+                android:focusable="false"
+                android:onClick="apagueMaterial"
+                tools:layout_width="@dimen/clearBig" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            tools:ignore="UselessParent">
+
+            <AutoCompleteTextView
+                android:id="@+id/etAddNome"
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/formItemHeightS"
+                android:background="@drawable/barradegradelights"
+                android:completionThreshold="1"
+                android:hint="@string/nome_generico"
+                android:imeOptions="actionNext"
+                android:inputType="textCapWords|textVisiblePassword"
+                android:paddingLeft="2dp"
+                android:paddingStart="2dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/formLabelHeaderS" />
+
+            <Button
+                android:id="@+id/clearAddNome"
+                android:layout_width="@dimen/clearBig"
+                android:layout_height="@dimen/clearBig"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_action_name"
+                android:focusable="false"
+                android:onClick="apagueNome" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            tools:ignore="UselessParent">
+
+            <EditText
+
+                android:id="@+id/etObs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/barradegradelights"
+                android:hint="@string/observacao"
+                android:imeOptions="actionNext"
+                android:paddingLeft="2dp"
+                android:paddingStart="2dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/formLabelHeaderS" />
+
+            <Button
+                android:id="@+id/clearObs"
+                android:layout_width="@dimen/clearBig"
+                android:layout_height="@dimen/clearBig"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_action_name"
+                android:focusable="false"
+                android:onClick="apagueObs"
+                tools:layout_width="@dimen/clearBig" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ll2"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btCancelarMaterial"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@color/blue_button"
+            android:padding="2dp"
+            android:text="@string/cancelar"
+            android:textColor="@color/white"
+            android:textSize="@dimen/formLabelsS" />
+
+        <View
+            android:layout_width="5dp"
+            android:layout_height="5dp" />
+
+
+        <Button
+            android:id="@+id/btSalvarMaterial"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@color/blue_button"
+
+            android:padding="5dp"
+            android:text="@string/salvar"
+            android:textColor="@color/white"
+            android:textSize="@dimen/formLabelsS" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll3"
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/btUsadoEm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/blue_button"
+            android:padding="2dp"
+            android:text="@string/clique_para_ver_onde_usado"
+            android:textColor="@color/white"
+            android:textSize="@dimen/formLabelsS" />
+
+        <ImageView
+            android:id="@+id/ivModeloCalha"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_weight="4"
+            android:contentDescription="@string/modelo_de_calha"
+            android:src="@drawable/calha" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/btEscolherImagem"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@color/blue_button"
+                android:padding="2dp"
+                android:text="@string/escolher_imagem"
+                android:textColor="@color/white"
+                android:textSize="@dimen/formLabelsS"
+                android:layout_marginRight="5dp"/>
+
+            <Button
+                android:id="@+id/btCamera"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@color/blue_button"
+                android:padding="2dp"
+                android:text="@string/tirar_foto"
+                android:textColor="@color/white"
+                android:textSize="@dimen/formLabelsS" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout><!--  android:src="@drawable/calha" -->

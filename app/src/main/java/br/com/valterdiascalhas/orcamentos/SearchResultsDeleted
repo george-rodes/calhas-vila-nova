@@ -1,0 +1,167 @@
+_______________________________________
+
+____
+OrcamentoAdapter adapter = new OrcamentoAdapter(this, orcamentos);
+                    listViewOrder.setAdapter(adapter);
+                    listViewOrder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                            c.moveToPosition(position);
+                            L.m(c.getString(c.getColumnIndex("orcamento")) + " " + c.getString(c.getColumnIndex("nome")));
+                        }
+                    });
+
+
+                    //Detalhe do Orçamento
+                    // Intent intent = new Intent(this, AtividadesActivity.class);
+                    // intent.putExtra("nome", );
+                    //  startActivity(intent);
+                    // finish();__________________________________________________
+/*********
+                 * should go back to the main Activity.
+                 * find the ListView row of the client position itself there and
+                 * find all the orders from that client
+                 */
+
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.putExtra("SearchResults", "SearchResults");
+                intent.putExtra("apelido", cliente);
+                intent.putExtra("id",id);
+                startActivity(intent);
+                finish();
+
+_____________________________________________________
+package br.com.valterdiascalhas.orcamentos;
+
+import android.app.SearchManager;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.CursorAdapter;
+import android.support.v4.widget.SimpleCursorAdapter;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
+public class SearchResults extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
+        ClientListFragment.OnFragmentInteractionListener {
+    DBAdapter dbAdapter;
+    SQLiteDatabase sqLiteDatabase;
+    Cursor cursor;
+    String query;
+    ListView listViewOrder;
+    Cursor c;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_search_results);
+        listViewOrder = (ListView) findViewById(R.id.listViewOrderSearchResults);
+        dbAdapter = new DBAdapter(SearchResults.this);
+
+        sqLiteDatabase = dbAdapter.mydbHelper.getWritableDatabase();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.search_results_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Intent searchIntent = getIntent();
+        if (searchIntent.getAction().equals(Intent.ACTION_VIEW)) {
+            cursor = dbAdapter.getOneClient(searchIntent.getData().getLastPathSegment());
+            if (cursor.moveToNext()) {
+                c = dbAdapter.retrieveOrder(cursor.getString(cursor.getColumnIndex(dbAdapter.mydbHelper.APELIDO)));
+                ArrayList orcamentos = new ArrayList<>();
+                if (c.getCount() > 0) {
+                    while (c.moveToNext()) {
+                        orcamentos.add(new Orcamento(
+                                c.getInt(1), c.getString(2), c.getString(3), c.getInt(4), c.getInt(5),
+                                c.getInt(6), c.getString(7), c.getString(8), c.getString(9), c.getInt(10),
+                                c.getString(11)));
+                    }
+                }
+
+
+                OrcamentoAdapter adapter = new OrcamentoAdapter(this, orcamentos);
+                listViewOrder.setAdapter(adapter);
+                listViewOrder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                        c.moveToPosition(position);
+                        L.m(c.getString(c.getColumnIndex("orcamento")) + " " + c.getString(c.getColumnIndex("nome")));
+                    }
+                });
+
+
+                //Detalhe do Orçamento
+                // Intent intent = new Intent(this, AtividadesActivity.class);
+                // intent.putExtra("nome", );
+                //  startActivity(intent);
+                // finish();
+            }
+
+
+        }
+
+        if (Intent.ACTION_SEARCH.equals(searchIntent.getAction())) {
+            query = searchIntent.getStringExtra(SearchManager.QUERY);
+            getSupportActionBar().setTitle(query);
+            //cursor = dbAdapter.cursorPublicadorBusca(query);
+            if (cursor.getCount() > 0) {
+                CursorAdapter listAdapter = new SimpleCursorAdapter(SearchResults.this, R.layout.row_cliente,
+                        cursor, new String[]{"apelido", "nome"}, new int[]{R.id.nome, R.id.rua}, 0);
+                listViewOrder.setAdapter(listAdapter);
+            }
+            listViewOrder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    view.setSelected(true);
+                    cursor.moveToPosition(position);
+                    //  Intent intent = new Intent(view.getContext(), AtividadesActivity.class);
+                    //  intent.putExtra("nome", cursor.getString(cursor.getColumnIndex("nome")));
+                    //  startActivity(intent);
+                }
+            });
+        }
+
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            /** Ihave to return where I came From **/
+            Intent returnIntent = new Intent();
+            //returnIntent.putExtra("busca", nameSearch);
+            setResult(RESULT_OK, returnIntent);
+            finish();
+            return true;
+        }
+        return true;
+    }
+
+    @Override
+    public void onFragmentInteraction(String who, String what) {
+    }
+
+    @Override
+    public void onAttachFragment(Fragment fragment) {
+        L.m("Main Activity calling onAttachFragment: " + fragment.toString());
+        super.onAttachFragment(fragment);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        return false;
+    }
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3f51b5</color>
+    <color name="colorPrimaryDark">#303f9f</color>
+    <color name="Indigo100">#18246f</color>
+    <color name="Indigo200">#9FA8DA</color>
+    <color name="Indigo500">#3f51b5</color>
+    <color name="Indigo700">#303f9f</color>
+    <color name="Indigo900">#841a237e</color>
+
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccentA100">#FF80AB</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000</color>
+    <color name="pressed_color">#8b9afd</color>
+    <color name="depressed_color">#E8EAF6</color>
+    <color name="dark_color">#000</color>
+    <color name="red">#F00</color>
+    <color name="primary_text">#212121</color>
+    <color name="primary_color">#2196f3</color>
+</resources>

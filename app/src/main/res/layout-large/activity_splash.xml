@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.valterdiascalhas.orcamentos.Splash"
+    android:gravity="center_vertical|center_horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/ll1"
+        android:gravity="center_vertical|center_horizontal">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/cvnlauncher"
+            android:src="@drawable/cvnlauncher"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/elementocalha"
+                android:src="@drawable/elementocalha"   />
+
+            <ImageView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:id="@+id/elementoelolico"
+                android:src="@drawable/elementoelolico"   />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</RelativeLayout>

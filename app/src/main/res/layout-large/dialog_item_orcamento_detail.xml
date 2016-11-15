@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:background="@color/depressed_color">
+
+<!--
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/editar_valores"
+        android:id="@+id/textView"
+        android:textStyle="bold"
+        android:textSize="20sp"/>
+-->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ivClose"
+        android:src="@drawable/ic_action_name"
+        android:layout_gravity="right" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/metros"
+            android:gravity="right"
+            android:textSize="@dimen/dialogFontSize"/>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etMetros"
+                android:inputType="textVisiblePassword"
+                android:digits="0123456789,"
+                android:textSize="@dimen/dialogFontSize"/>
+
+            <Button
+                android:id="@+id/clearMetroDialog"
+                android:layout_width="@dimen/clearBigger"
+                android:layout_height="@dimen/clearBigger"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_action_name"
+                android:focusable="false" />
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/r_por_metro"
+            android:gravity="right"
+            android:textSize="@dimen/dialogFontSize"/>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+
+        <EditText
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etPrecoMetro"
+            android:inputType="textVisiblePassword"
+            android:digits="0123456789,"
+            android:textSize="@dimen/dialogFontSize"/>
+
+            <Button
+                android:id="@+id/clearPrecoDialog"
+                android:layout_width="@dimen/clearBigger"
+                android:layout_height="@dimen/clearBigger"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_action_name"
+                android:focusable="false" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/cancelar"
+            android:id="@+id/btDialogCancel"
+            android:background="@color/colorPrimary"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/dialogFontSize"
+            android:layout_margin="10dp"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/salvar"
+            android:id="@+id/btDialogSave"
+            android:background="@color/colorPrimary"
+            android:layout_margin="10dp"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/dialogFontSize" />
+    </LinearLayout>
+
+</LinearLayout>

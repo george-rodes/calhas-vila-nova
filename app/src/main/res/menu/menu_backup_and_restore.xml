@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+    android:id="@+id/mlogDropBox"
+    android:orderInCategory="100"
+    android:title="@string/login_logout_from_dropbox"
+    app:showAsAction="never" />
+    <item
+        android:id="@+id/menviarDB"
+        android:orderInCategory="200"
+        android:title="@string/enviar_backup_para_o_dropbox"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/mcopyDataBaseSdCard"
+        android:orderInCategory="300"
+        android:title="@string/enviar_para_o_email"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/mreceberDB"
+        android:orderInCategory="400"
+        android:title="@string/recuperar_backup_do_dropbox"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/mimportDataBaseSdCard"
+        android:orderInCategory="500"
+        android:title="@string/recuperar_base_do_cart_o"
+        app:showAsAction="never" />
+
+
+</menu>

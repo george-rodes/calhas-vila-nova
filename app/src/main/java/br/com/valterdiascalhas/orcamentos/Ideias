@@ -1,0 +1,74 @@
+File dir=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
+Bitmap b= BitmapFactory.decodeFile(PATH_ORIGINAL_IMAGE);
+Bitmap out = Bitmap.createScaledBitmap(b, 320, 480, false);
+
+File file = new File(dir, "resize.png");
+FileOutputStream fOut;
+try {
+    fOut = new FileOutputStream(file);
+    out.compress(Bitmap.CompressFormat.PNG, 100, fOut);
+    fOut.flush();
+    fOut.close();
+    b.recycle();
+    out.recycle();
+} catch (Exception e) {}
+_______________
+
+try {
+                    File sd = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+                    if (sd.canWrite()) {
+                        String srcString = imgDecodableString;
+                        String dstString = imagem;
+                        File srcFile = new File(srcString);
+                        File dstFile = new File(sd, dstString);
+                        if (srcFile.exists()) {
+
+                            FileChannel src = new FileInputStream(srcFile).getChannel();
+                            FileChannel dst = new FileOutputStream(dstFile).getChannel();
+                            dst.
+                            dst.transferFrom(src, 0, src.size());
+                            src.close();
+                            dst.close();
+                        }
+                    }
+                } catch (Exception e) {
+                    L.m(e.toString());
+                }
+________________
+delete
+
+Novo orçamento
+Autocompleteview de Apelido,
+o nome é digitado é o nome novo
+dialofo pergunta para adicionar novo cliente
+usuario confirma e vai para cliente activity
+
+/**
+* DEPOIS da Confirmação do Cliente com o onDialogMessage
+* Apelido = não mudou
+* Nome = será atulizado & adapterNome.notifyDataSetChanged();
+* Fone = será atualizado
+* email será atualizado
+* Rua será atualizada & acsrescentada na tabela & adapterRua.notifyDataSetChanged();
+* Bairro  será atualizada & acsrescentada na tabela & adapterBairro.notifyDataSetChanged();
+*/
+
+
+
+
+
+MODELOS DE CALHAS
+inserir via camera ou galeria de fotos
+
+DROPBOX
+MENU
+
+
+FEITO
+Recuperar Banco de Dados do Dropbox "/"
+Recuperar imagens do Dropbox "/Fotos"
+Enviar Banco de Dados para o Dropbox "/"
+Enviar imagens do getExternalFilesDir(Environment.DIRECTORY_PICTURES) para o dropBox/FOTOS
+
+
+NAVIGATION Activities
