@@ -41,6 +41,8 @@ import java.util.Locale;
 import android.support.v7.app.AlertDialog;
 
 public class BackupActivity extends AppCompatActivity {
+    //git test 14:53
+
     private DBAdapter dbAdapter;
     private SQLiteDatabase sqLiteDatabase;
     private TextView tvStatus;
