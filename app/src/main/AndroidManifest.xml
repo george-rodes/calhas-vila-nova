@@ -38,7 +38,8 @@
             android:launchMode="singleTask"
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
             <intent-filter>
-                <data android:scheme="db-vwk5jtt3pjuq7jx" />
+                
+                <data android:scheme="db-vwk5jtt368pjuq7jx" />
 
                 <action android:name="android.intent.action.VIEW" />
 
