@@ -1,8 +1,8 @@
 App key
-vwk5jtt3pjuq7jx
+vwk5jtt368pjuq7jx
 
 App secret
-8fk9isxb121ypit
+8fk9isx68b121ypit
 
 Generated access token
-JGb3Iy7NpioAAAAAAAB0bkO48Wd7kSzlGCHRXvQZ64welN8xGuo1voiiilGsZMYp
+JGb3Iy7NpioAAAAAAAB0bkO48Wd7kS68zlGCHRXvQZ64welN8xGuo1voiiilGsZMYp
